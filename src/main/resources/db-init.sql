@@ -54,6 +54,18 @@ CREATE TABLE tbl_location_posts (
    tbl_location_location_id INT NOT NULL
 );
 
+CREATE TABLE tbl_payment (
+  seller_id INT NOT NULL,
+   payment_amount VARCHAR(255) NULL,
+   payment_upi_id VARCHAR(255) NULL,
+   payment_transaction_id VARCHAR(255) NULL,
+   payment_created_at datetime NULL,
+   payment_updated_at datetime NULL,
+   CONSTRAINT pk_tbl_payment PRIMARY KEY (seller_id)
+);
+
+ALTER TABLE tbl_payment ADD CONSTRAINT FK_TBL_PAYMENT_ON_SELLER FOREIGN KEY (seller_id) REFERENCES tbl_seller (verification_id);
+
 ALTER TABLE tbl_location ADD CONSTRAINT uc_tbl_location_location_district UNIQUE (location_district);
 
 ALTER TABLE tbl_location_posts ADD CONSTRAINT uc_tbl_location_posts_posts_post UNIQUE (posts_post_id);
