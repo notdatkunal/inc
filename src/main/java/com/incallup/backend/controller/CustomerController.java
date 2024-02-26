@@ -2,6 +2,7 @@
 package com.incallup.backend.controller;
 
 import com.incallup.backend.domain.Category;
+import com.incallup.backend.exception.ApplicationException;
 import com.incallup.backend.utility.IncallupConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ui.Model;
@@ -96,6 +97,8 @@ public class CustomerController {
         modelAndView.addObject("category",categoryList.stream().toList());
         return modelAndView;
     }
+
+    @ExceptionHandler({ApplicationException.class})
 
 }
 
