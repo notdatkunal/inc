@@ -38,6 +38,29 @@ CREATE TABLE tbl_customer (
    CONSTRAINT pk_tbl_customer PRIMARY KEY (id)
 );
 
+CREATE TABLE tbl_location (
+  location_id INT AUTO_INCREMENT NOT NULL,
+   location_district VARCHAR(255) NOT NULL,
+   location_state VARCHAR(255) NOT NULL,
+   location_created_at datetime NULL,
+   location_updated_at datetime NULL,
+   location_description VARCHAR(255) NULL,
+   location_meta VARCHAR(255) NULL,
+   CONSTRAINT pk_tbl_location PRIMARY KEY (location_id)
+);
+
+CREATE TABLE tbl_location_posts (
+  posts_post_id INT NOT NULL,
+   tbl_location_location_id INT NOT NULL
+);
+
+ALTER TABLE tbl_location ADD CONSTRAINT uc_tbl_location_location_district UNIQUE (location_district);
+
+ALTER TABLE tbl_location_posts ADD CONSTRAINT uc_tbl_location_posts_posts_post UNIQUE (posts_post_id);
+
+ALTER TABLE tbl_location_posts ADD CONSTRAINT fk_tbllocpos_on_location FOREIGN KEY (tbl_location_location_id) REFERENCES tbl_location (location_id);
+
+ALTER TABLE tbl_location_posts ADD CONSTRAINT fk_tbllocpos_on_post FOREIGN KEY (posts_post_id) REFERENCES tbl_post (post_id);
 
 ALTER TABLE tbl_category ADD CONSTRAINT uc_tbl_category_category_name UNIQUE (category_name);
 
