@@ -99,6 +99,10 @@ public class CustomerController {
     }
 
     @ExceptionHandler({ApplicationException.class})
+    public ModelAndView plan(ModelAndView modelAndView){
+        modelAndView.setViewName("Error");
+        return modelAndView;
+    }
 
 }
 
