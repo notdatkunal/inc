@@ -108,6 +108,14 @@ CREATE TABLE tbl_seller (
    CONSTRAINT pk_tbl_seller PRIMARY KEY (verification_id)
 );
 
+CREATE TABLE tbl_verification (
+  verification_id INT AUTO_INCREMENT NOT NULL,
+   verification_is_verified BIT(1) NULL,
+   verification_created_at datetime NULL,
+   verification_updated_at datetime NULL,
+   CONSTRAINT pk_tbl_verification PRIMARY KEY (verification_id)
+);
+
 ALTER TABLE tbl_seller ADD CONSTRAINT uc_tbl_seller_seller_username UNIQUE (seller_username);
 
 ALTER TABLE tbl_seller ADD CONSTRAINT FK_TBL_SELLER_ON_VERIFICATION FOREIGN KEY (verification_id) REFERENCES tbl_verification (verification_id);
