@@ -81,6 +81,14 @@ CREATE TABLE tbl_post (
    CONSTRAINT pk_tbl_post PRIMARY KEY (post_id)
 );
 
+CREATE TABLE tbl_promotion (
+  promotion_id INT AUTO_INCREMENT NOT NULL,
+   promotion_amount VARCHAR(255) NOT NULL,
+   promotion_created_at datetime NULL,
+   promotion_updated_at datetime NULL,
+   CONSTRAINT pk_tbl_promotion PRIMARY KEY (promotion_id)
+);
+
 ALTER TABLE tbl_post ADD CONSTRAINT uc_tbl_post_post_title UNIQUE (post_title);
 
 ALTER TABLE tbl_post ADD CONSTRAINT FK_TBL_POST_ON_CATEGORY_CATEGORY FOREIGN KEY (category_category_id) REFERENCES tbl_category (category_id);
