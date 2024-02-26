@@ -59,7 +59,7 @@ public class AdminController {
     }
 
     @ExceptionHandler({ApplicationException.class})
-    public ModelAndView task(ModelAndView modelAndView){
+    public ModelAndView locAtion(ModelAndView modelAndView){
         modelAndView.setViewName("Error");
         return modelAndView;
 
