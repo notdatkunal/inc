@@ -1,3 +1,4 @@
+CREATE DATABASE N-INC;
 
 CREATE TABLE admin_role_junction (
   admin_id INT NOT NULL,
