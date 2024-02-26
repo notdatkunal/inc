@@ -3,6 +3,7 @@ package com.incallup.backend.controller;
 import com.incallup.backend.domain.Admin;
 import com.incallup.backend.domain.AdminDTO;
 import com.incallup.backend.domain.LoginResponse;
+import com.incallup.backend.exception.ApplicationException;
 import com.incallup.backend.service.impl.AuthenticationService;
 import com.incallup.backend.service.impl.LoginService;
 import lombok.*;
@@ -35,7 +36,7 @@ public class AuthenticationController {
         return authenticationService.loginResponse(loginResponse.getUsername(),loginResponse.getPassword());
     }
 
-
+    @ExceptionHandler({ApplicationException.class})
 
 
 
