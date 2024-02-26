@@ -97,6 +97,21 @@ CREATE TABLE tbl_role (
    CONSTRAINT pk_tbl_role PRIMARY KEY (role_id)
 );
 
+CREATE TABLE tbl_seller (
+  verification_id INT NOT NULL,
+   seller_username VARCHAR(255) NOT NULL,
+   seller_email VARCHAR(255) NOT NULL,
+   seller_password VARCHAR(255) NOT NULL,
+   seller_created_at datetime NULL,
+   seller_updated_at datetime NULL,
+   seller_is_blocked BIT(1) NULL,
+   CONSTRAINT pk_tbl_seller PRIMARY KEY (verification_id)
+);
+
+ALTER TABLE tbl_seller ADD CONSTRAINT uc_tbl_seller_seller_username UNIQUE (seller_username);
+
+ALTER TABLE tbl_seller ADD CONSTRAINT FK_TBL_SELLER_ON_VERIFICATION FOREIGN KEY (verification_id) REFERENCES tbl_verification (verification_id);
+
 ALTER TABLE tbl_post ADD CONSTRAINT uc_tbl_post_post_title UNIQUE (post_title);
 
 ALTER TABLE tbl_post ADD CONSTRAINT FK_TBL_POST_ON_CATEGORY_CATEGORY FOREIGN KEY (category_category_id) REFERENCES tbl_category (category_id);
