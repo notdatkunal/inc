@@ -1,13 +1,18 @@
 package com.incallup.backend.controller;
 import com.incallup.backend.domain.Admin;
+import com.incallup.backend.exception.ApplicationException;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.sql.SQLException;
 
 @RestController
 @RequestMapping("/admin")
 @Slf4j
-@ExceptionHandler
 //@GetMapping("/admin")
 //@GetMapping("/admin/list/post")
 //@GetMapping("/admin/list/sellers")
@@ -51,6 +56,13 @@ public class AdminController {
     @PutMapping("/block/post/{id}")
     public String ProfilePost(@PathVariable Integer adminId){
         return "Let the admin post something by Id";
+    }
+
+    @ExceptionHandler({ApplicationException.class})
+    public ModelAndView task(ModelAndView modelAndView){
+        modelAndView.setViewName("Error");
+        return modelAndView;
+
     }
 
 
