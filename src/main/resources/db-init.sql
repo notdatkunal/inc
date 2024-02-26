@@ -64,6 +64,33 @@ CREATE TABLE tbl_payment (
    CONSTRAINT pk_tbl_payment PRIMARY KEY (seller_id)
 );
 
+CREATE TABLE tbl_post (
+  post_id INT AUTO_INCREMENT NOT NULL,
+   post_title VARCHAR(255) NULL,
+   location_location_id INT NULL,
+   post_views INT NULL,
+   post_contact VARCHAR(255) NULL,
+   post_age INT NULL,
+   post_description VARCHAR(255) NULL,
+   category_category_id INT NULL,
+   promotion_promotion_id INT NULL,
+   post_created_at datetime NULL,
+   post_updated_at datetime NULL,
+   post_is_blocked BIT(1) NULL,
+   seller_id INT NULL,
+   CONSTRAINT pk_tbl_post PRIMARY KEY (post_id)
+);
+
+ALTER TABLE tbl_post ADD CONSTRAINT uc_tbl_post_post_title UNIQUE (post_title);
+
+ALTER TABLE tbl_post ADD CONSTRAINT FK_TBL_POST_ON_CATEGORY_CATEGORY FOREIGN KEY (category_category_id) REFERENCES tbl_category (category_id);
+
+ALTER TABLE tbl_post ADD CONSTRAINT FK_TBL_POST_ON_LOCATION_LOCATION FOREIGN KEY (location_location_id) REFERENCES tbl_location (location_id);
+
+ALTER TABLE tbl_post ADD CONSTRAINT FK_TBL_POST_ON_PROMOTION_PROMOTION FOREIGN KEY (promotion_promotion_id) REFERENCES tbl_promotion (promotion_id);
+
+ALTER TABLE tbl_post ADD CONSTRAINT FK_TBL_POST_ON_SELLER FOREIGN KEY (seller_id) REFERENCES tbl_seller (verification_id);
+
 ALTER TABLE tbl_payment ADD CONSTRAINT FK_TBL_PAYMENT_ON_SELLER FOREIGN KEY (seller_id) REFERENCES tbl_seller (verification_id);
 
 ALTER TABLE tbl_location ADD CONSTRAINT uc_tbl_location_location_district UNIQUE (location_district);
