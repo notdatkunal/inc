@@ -31,6 +31,14 @@ CREATE TABLE tbl_category_posts (
    tbl_category_category_id INT NOT NULL
 );
 
+CREATE TABLE tbl_customer (
+  id INT AUTO_INCREMENT NOT NULL,
+   customer_created_at datetime NULL,
+   customer_updated_at datetime NULL,
+   CONSTRAINT pk_tbl_customer PRIMARY KEY (id)
+);
+
+
 ALTER TABLE tbl_category ADD CONSTRAINT uc_tbl_category_category_name UNIQUE (category_name);
 
 ALTER TABLE tbl_category ADD CONSTRAINT uc_tbl_category_category_title UNIQUE (category_title);
