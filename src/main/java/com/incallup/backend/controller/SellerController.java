@@ -7,6 +7,7 @@ import com.incallup.backend.domain.Seller;
 import com.incallup.backend.exception.ApplicationException;
 import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("/seller")
@@ -60,6 +61,10 @@ public class SellerController {
     }
 
     @ExceptionHandler({ApplicationException.class})
+    public ModelAndView project(ModelAndView modelAndView){
+        modelAndView.setViewName("Error");
+        return modelAndView;
+    }
 
 }
 
