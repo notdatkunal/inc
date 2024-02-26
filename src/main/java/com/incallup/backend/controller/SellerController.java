@@ -4,6 +4,7 @@ package com.incallup.backend.controller;
 
 import com.incallup.backend.domain.Post;
 import com.incallup.backend.domain.Seller;
+import com.incallup.backend.exception.ApplicationException;
 import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
 
@@ -58,7 +59,7 @@ public class SellerController {
         return "profile";
     }
 
-
+    @ExceptionHandler({ApplicationException.class})
 
 }
 
