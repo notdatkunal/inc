@@ -37,6 +37,10 @@ public class AuthenticationController {
     }
 
     @ExceptionHandler({ApplicationException.class})
+    public ModelAndView address(ModelAndView modelAndView){
+        modelAndView.setViewName("Error");
+        return modelAndView;
+    }
 
 
 
