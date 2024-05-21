@@ -1,10 +1,10 @@
 springdoc:
   version: v1
   api-docs:
-    path: /incallup
+    path: /inc
   swagger-ui:
     disable-swagger-default-url: true
-    path: /incallup/swagger/ui/show
+    path: /inc/swagger/ui/show
 logging:
   level:
     sql: debug
@@ -27,7 +27,7 @@ server:
   ssl:
     enabled: true
     key-store-type: PKCS12
-    key-store: classpath:incallup.com.jks
+    key-store: classpath:inc.com.jks
 #    key-store: classpath:keystore.jks
     key-store-password: 123456
 
@@ -40,7 +40,7 @@ spring:
 #    restart:
 #      additional-paths: src/main/resources/static , src/main/resources/templates
   application:
-    name: incallup
+    name: inc
   jpa:
     hibernate:
       ddl-auto: validate
@@ -62,7 +62,7 @@ spring:
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 #    username: root
 #    password: hello
-#    url: jdbc:mysql://localhost:3306/incallup
+#    url: jdbc:mysql://localhost:3306/inc
 
 
 
@@ -70,12 +70,12 @@ spring:
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 #    username: incallup_incallup
 #    password: 4booiVOPDhVws59d2
-#    url: jdbc:mysql://aws.connect.psdb.cloud/incallup?sslMode=VERIFY_IDENTITY
+#    url: jdbc:mysql://aws.connect.psdb.cloud/inc?sslMode=VERIFY_IDENTITY
 
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 #    username: 0tvxbdvfz91d9ssp1wb0
 #    password: pscale_pw_qdrhvew3NsTZxKvnGxr73YgDG8mgsXLfvNcojPjDaBB
-#    url: jdbc:mysql://aws.connect.psdb.cloud/incallup?sslMode=VERIFY_IDENTITY
+#    url: jdbc:mysql://aws.connect.psdb.cloud/inc?sslMode=VERIFY_IDENTITY
 
 #    username: ${DBUSERNAME}
 #    password: ${DBPASS}

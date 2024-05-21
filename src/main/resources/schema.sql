@@ -11,19 +11,19 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- Schema mydb
 -- -----------------------------------------------------
 -- -----------------------------------------------------
--- Schema incallup
+-- Schema inc
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema incallup
+-- Schema inc
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `incallup` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
-USE `incallup` ;
+CREATE SCHEMA IF NOT EXISTS `inc` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `inc` ;
 
 -- -----------------------------------------------------
--- Table `incallup`.`tbl_admin`
+-- Table `inc`.`tbl_admin`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `incallup`.`tbl_admin` (
+CREATE TABLE IF NOT EXISTS `inc`.`tbl_admin` (
   `idAdmin` INT NOT NULL AUTO_INCREMENT,
   `admin_username` VARCHAR(45) NOT NULL,
   `admin_password` VARCHAR(45) NOT NULL,
@@ -33,17 +33,17 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-CREATE UNIQUE INDEX `idAdmin_UNIQUE` ON `incallup`.`tbl_admin` (`idAdmin` ASC) VISIBLE;
+CREATE UNIQUE INDEX `idAdmin_UNIQUE` ON `inc`.`tbl_admin` (`idAdmin` ASC) VISIBLE;
 
-CREATE UNIQUE INDEX `username_UNIQUE` ON `incallup`.`tbl_admin` (`admin_username` ASC) VISIBLE;
+CREATE UNIQUE INDEX `username_UNIQUE` ON `inc`.`tbl_admin` (`admin_username` ASC) VISIBLE;
 
-CREATE INDEX `type` ON `incallup`.`tbl_admin` (`admin_type` ASC) VISIBLE;
+CREATE INDEX `type` ON `inc`.`tbl_admin` (`admin_type` ASC) VISIBLE;
 
 
 -- -----------------------------------------------------
--- Table `incallup`.`tbl_category`
+-- Table `inc`.`tbl_category`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `incallup`.`tbl_category` (
+CREATE TABLE IF NOT EXISTS `inc`.`tbl_category` (
   `idCategory` INT NOT NULL AUTO_INCREMENT,
   `category_name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idCategory`))
@@ -54,9 +54,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `incallup`.`tbl_location`
+-- Table `inc`.`tbl_location`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `incallup`.`tbl_location` (
+CREATE TABLE IF NOT EXISTS `inc`.`tbl_location` (
   `idt_location` INT NOT NULL AUTO_INCREMENT,
   `location_name` VARCHAR(90) NOT NULL,
   PRIMARY KEY (`idt_location`))
@@ -65,13 +65,13 @@ AUTO_INCREMENT = 14
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-CREATE UNIQUE INDEX `name_UNIQUE` ON `incallup`.`tbl_location` (`location_name` ASC) VISIBLE;
+CREATE UNIQUE INDEX `name_UNIQUE` ON `inc`.`tbl_location` (`location_name` ASC) VISIBLE;
 
 
 -- -----------------------------------------------------
--- Table `incallup`.`tbl_promotion`
+-- Table `inc`.`tbl_promotion`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `incallup`.`tbl_promotion` (
+CREATE TABLE IF NOT EXISTS `inc`.`tbl_promotion` (
   `idPromotion` INT NOT NULL,
   `promotion_amount` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`idPromotion`))
@@ -81,9 +81,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `incallup`.`tbl_verification`
+-- Table `inc`.`tbl_verification`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `incallup`.`tbl_verification` (
+CREATE TABLE IF NOT EXISTS `inc`.`tbl_verification` (
   `idVerification` INT NOT NULL AUTO_INCREMENT,
   `verification_type` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`idVerification`))
@@ -92,13 +92,13 @@ AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-CREATE UNIQUE INDEX `verification_type_UNIQUE` ON `incallup`.`tbl_verification` (`verification_type` ASC) VISIBLE;
+CREATE UNIQUE INDEX `verification_type_UNIQUE` ON `inc`.`tbl_verification` (`verification_type` ASC) VISIBLE;
 
 
 -- -----------------------------------------------------
--- Table `incallup`.`tbl_post`
+-- Table `inc`.`tbl_post`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `incallup`.`tbl_post` (
+CREATE TABLE IF NOT EXISTS `inc`.`tbl_post` (
   `idpost` INT NOT NULL AUTO_INCREMENT,
   `post_title` VARCHAR(80) NOT NULL,
   `post_location_id` INT NOT NULL DEFAULT '0',
@@ -113,29 +113,29 @@ CREATE TABLE IF NOT EXISTS `incallup`.`tbl_post` (
   PRIMARY KEY (`idpost`),
   CONSTRAINT `category`
     FOREIGN KEY (`post_category_id`)
-    REFERENCES `incallup`.`tbl_category` (`idCategory`),
+    REFERENCES `inc`.`tbl_category` (`idCategory`),
   CONSTRAINT `location`
     FOREIGN KEY (`post_location_id`)
-    REFERENCES `incallup`.`tbl_location` (`idt_location`),
+    REFERENCES `inc`.`tbl_location` (`idt_location`),
   CONSTRAINT `promotion`
     FOREIGN KEY (`post_promotion_id`)
-    REFERENCES `incallup`.`tbl_promotion` (`idPromotion`),
+    REFERENCES `inc`.`tbl_promotion` (`idPromotion`),
   CONSTRAINT `verification`
     FOREIGN KEY (`post_verification_id`)
-    REFERENCES `incallup`.`tbl_verification` (`idVerification`))
+    REFERENCES `inc`.`tbl_verification` (`idVerification`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-CREATE UNIQUE INDEX `post_title_UNIQUE` ON `incallup`.`tbl_post` (`post_title` ASC) VISIBLE;
+CREATE UNIQUE INDEX `post_title_UNIQUE` ON `inc`.`tbl_post` (`post_title` ASC) VISIBLE;
 
-CREATE INDEX `location_idx` ON `incallup`.`tbl_post` (`post_location_id` ASC) VISIBLE;
+CREATE INDEX `location_idx` ON `inc`.`tbl_post` (`post_location_id` ASC) VISIBLE;
 
-CREATE INDEX `category_idx` ON `incallup`.`tbl_post` (`post_category_id` ASC) VISIBLE;
+CREATE INDEX `category_idx` ON `inc`.`tbl_post` (`post_category_id` ASC) VISIBLE;
 
-CREATE INDEX `promotion_idx` ON `incallup`.`tbl_post` (`post_promotion_id` ASC) VISIBLE;
+CREATE INDEX `promotion_idx` ON `inc`.`tbl_post` (`post_promotion_id` ASC) VISIBLE;
 
-CREATE INDEX `verification_idx` ON `incallup`.`tbl_post` (`post_verification_id` ASC) VISIBLE;
+CREATE INDEX `verification_idx` ON `inc`.`tbl_post` (`post_verification_id` ASC) VISIBLE;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

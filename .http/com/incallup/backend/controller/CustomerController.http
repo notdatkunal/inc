@@ -1,4 +1,4 @@
-### com.incallup.backend.controller.CustomerController#Customer
+### controller.com.inc.backend.CustomerController#Customer
 # @name Customer 
 
 GET {{host}}/
